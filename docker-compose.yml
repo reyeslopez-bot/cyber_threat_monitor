@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: cyber_threats
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: yourpassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  app:
+    build: .
+    environment:
+      - VIRUSTOTAL_API_KEY=${VIRUSTOTAL_API_KEY}
+      - DB_NAME=cyber_threats
+      - DB_USER=postgres
+      - DB_PASSWORD=yourpassword
+      - DB_HOST=db
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    command: python main.py
+
+volumes:
+  pgdata:

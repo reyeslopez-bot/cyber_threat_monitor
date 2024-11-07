@@ -1,0 +1,10 @@
+{
+    "ip": "8.8.8.8",
+    "asn": 15169,
+    "country": "US",
+    "reputation": 540,
+    "malicious": 1,
+    "suspicious": 0,
+    "undetected": 31,
+    "harmless": 62
+}
